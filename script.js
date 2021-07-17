@@ -1,5 +1,6 @@
 var resultBlocks = document.querySelectorAll(".results");
 var resultsDescription = document.querySelectorAll(".description");
+var imageBlocks = document.querySelectorAll(".image_result");
 
 
 var PRIV_KEY = "b62c40680e3ea3090a2462bc3021628651c2d45f";
@@ -37,6 +38,10 @@ function getMarvelResponse() {
             var descriptionEl = document.createElement("h2");
             descriptionEl.textContent = comicDescription;
             resultsDescription[i].append(descriptionEl);
+            var imageUrl = newdata.data.results[i].thumbnail.path + ".jpg";
+            var image = document.createElement("img");
+            image.setAttribute("src", imageUrl);
+            imageBlocks[i].append(image);
 
           }
 
