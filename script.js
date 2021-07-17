@@ -1,16 +1,24 @@
 var resultBlocks = document.querySelectorAll(".results");
 var resultsDescription = document.querySelectorAll(".description");
 var imageBlocks = document.querySelectorAll(".image_result");
-
+var characterInput = document.querySelector("#character-input");
+var searchBtn = document.querySelector(".search_btn");
+var thumbnails = document.querySelectorAll(".thumbnail");
+var describedComic = document.querySelectorAll(".description-text");
 
 var PRIV_KEY = "b62c40680e3ea3090a2462bc3021628651c2d45f";
 var PUBLIC_KEY = "ab9297e9d4bda4ab94cb17eb9e3fe843";
-function getMarvelResponse() {
+
+
+
+searchBtn.addEventListener("click", function() {
+
   // you need a new ts every request                                                                                    
   var ts = new Date().getTime();
   var hash = CryptoJS.MD5(ts + PRIV_KEY + PUBLIC_KEY).toString();
+  var characterChosen = characterInput.value;
   // the api deals a lot in ids rather than just the strings you want to use
-  var characterName = 'steve rogers'; // wolverine                                                                             
+  var characterName = characterChosen; // wolverine                                                                             
   var queryParams = `ts=${ts}&apikey=${PUBLIC_KEY}&hash=${hash}&name=${characterName}`;
   var url = `http://gateway.marvel.com/v1/public/characters?${queryParams}`;
   console.log(url);
@@ -21,7 +29,7 @@ function getMarvelResponse() {
     .then(function (data) {
       console.log(data);
       var charactersId = data.data.results[0].id;
-      console.log(charactersId);
+      // console.log(charactersId);
       var newParams = `ts=${ts}&apikey=${PUBLIC_KEY}&hash=${hash}&characters=${charactersId}`;
       characterUrl = `http://gateway.marvel.com/v1/public/comics?${newParams}`;
       fetch(characterUrl)
@@ -33,15 +41,16 @@ function getMarvelResponse() {
 
 
           for(i = 0; i < resultBlocks.length; i++) {
+
+            
+
              var comicDescription = newdata.data.results[i].description;
-             console.log(comicDescription);
-            var descriptionEl = document.createElement("h2");
-            descriptionEl.textContent = comicDescription;
-            resultsDescription[i].append(descriptionEl);
+            //  console.log(comicDescription);
+            describedComic[i].textContent = comicDescription;
             var imageUrl = newdata.data.results[i].thumbnail.path + ".jpg";
-            var image = document.createElement("img");
-            image.setAttribute("src", imageUrl);
-            imageBlocks[i].append(image);
+            thumbnails[i].setAttribute("src", imageUrl);
+            
+            
 
           }
 
@@ -50,8 +59,8 @@ function getMarvelResponse() {
 
         })
     });
-}
-getMarvelResponse();
+})
+// getMarvelResponse();
 
 
 
