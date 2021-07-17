@@ -78,4 +78,7 @@ html {
   bottom: 0;
   height: 25%;
   width: 100%;
+  font-size: small;
+  overflow: hidden;
+  font-family: "Marvel", sans-serif;
 }
