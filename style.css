@@ -22,6 +22,10 @@ html {
   text-align: center;
 }
 
+.search_bar {
+  width: 40%;
+}
+
 .search_bar:hover {
   border-color: red;
   transition: ease-in-out 0.2s;
@@ -29,7 +33,7 @@ html {
 
 /* Search Button */
 .search_btn {
-  background-color: black; /* Green */
+  background-color: black;
   border: none;
   border-radius: 33%;
   color: white;
@@ -44,4 +48,21 @@ html {
   cursor: pointer;
   background-color: #383737;
   transition: ease-in-out 0.2s;
+}
+
+.search_results {
+  background-color: black;
+}
+
+/* Search results container */
+
+.search_results_container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.results {
+  width: 275px;
+  height: 400px;
 }
