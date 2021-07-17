@@ -1,3 +1,6 @@
+var resultBlocks = document.querySelectorAll(".results");
+var resultsDescription = document.querySelectorAll(".description");
+
 
 var PRIV_KEY = "b62c40680e3ea3090a2462bc3021628651c2d45f";
 var PUBLIC_KEY = "ab9297e9d4bda4ab94cb17eb9e3fe843";
@@ -26,9 +29,24 @@ function getMarvelResponse() {
         })
         .then (function (newdata) {
           console.log(newdata);
+
+
+          for(i = 0; i < resultBlocks.length; i++) {
+             var comicDescription = newdata.data.results[i].description;
+             console.log(comicDescription);
+            var descriptionEl = document.createElement("h2");
+            descriptionEl.textContent = comicDescription;
+            resultsDescription[i].append(descriptionEl);
+
+          }
+
+
+
+
         })
     });
 }
 getMarvelResponse();
+
 
 
