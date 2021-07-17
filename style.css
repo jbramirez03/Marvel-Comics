@@ -65,4 +65,17 @@ html {
 .results {
   width: 275px;
   height: 400px;
+  position: relative;
+}
+.image_result {
+  position: absolute;
+  top: 0;
+  height: 75%;
+  width: 100%;
+}
+.description {
+  position: absolute;
+  bottom: 0;
+  height: 25%;
+  width: 100%;
 }
