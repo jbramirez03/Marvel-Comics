@@ -10,11 +10,19 @@ var PRIV_KEY = "b62c40680e3ea3090a2462bc3021628651c2d45f";
 var PUBLIC_KEY = "ab9297e9d4bda4ab94cb17eb9e3fe843";
 
 // need to add function to run when "enter" is pushed 
-// document.querySelector("search_bar").addEventListener("keyup", function(event){
+document.querySelector(".search_bar").addEventListener("keyup", function(event){
+  if(event.key === "Enter") {
+    getCharacterComic();
+  }
+})
 // if (event.key == "Enter") 
 // to run the same function as below
 
 searchBtn.addEventListener("click", function() {
+  getCharacterComic();
+});
+
+function getCharacterComic () {
 
   // you need a new ts every request                                                                                    
   var ts = new Date().getTime();
@@ -47,9 +55,10 @@ searchBtn.addEventListener("click", function() {
 
             
 
-             var comicDescription = newdata.data.results[i].description;
+             var comicDescription = newdata.data.results[i].title;
             //  console.log(comicDescription);
             describedComic[i].textContent = comicDescription;
+            describedComic[i].classList.add("has-text-centered");
             var imageUrl = newdata.data.results[i].thumbnail.path + ".jpg";
             thumbnails[i].setAttribute("src", imageUrl);
             
@@ -62,7 +71,7 @@ searchBtn.addEventListener("click", function() {
 
         })
     });
-})
+}
 // getMarvelResponse();
 
 
