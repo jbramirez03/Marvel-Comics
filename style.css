@@ -66,17 +66,19 @@ html {
   width: 275px;
   height: 400px;
   position: relative;
+  margin: 10px;
 }
 .image_result {
   position: absolute;
   top: 0;
-  height: 75%;
+  height: 60%;
   width: 100%;
 }
 .description {
+  margin: 10px;
   position: absolute;
   bottom: 0;
-  height: 25%;
+  height: 15%;
   width: 100%;
   font-size: small;
   overflow: hidden;
