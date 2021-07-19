@@ -1,9 +1,7 @@
 # Marvel-Comics
 
-## To Do:
-1. make Html
-2. make css
-3. make script
-4. link files to root
-5. structure webpage
-6. start on api call
+## Description
+
+This application is meant to give the user a way to find comics to buy, by only searching for the Marvel Character. Once the character is selected and the user clicks "Find Comics", the user is given all comics with that given character. They can then select "learn more" to find more details on that comic and find where to buy it.
+
+###

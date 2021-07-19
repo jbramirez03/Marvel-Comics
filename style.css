@@ -13,6 +13,10 @@ html {
   background-size: cover;
 }
 
+.html_clicked {
+  background-color: black;
+}
+
 /* Div with search bar */
 .search {
   margin: auto;
@@ -44,6 +48,18 @@ html {
   font-size: 12px;
 }
 
+.search_btn_clicked {
+  background-color: white;
+  border: none;
+  border-radius: 33%;
+  color: rgb(85, 83, 83);
+  padding: 15px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+}
+
 .search_btn:hover {
   cursor: pointer;
   background-color: #383737;
@@ -64,7 +80,7 @@ html {
 
 .results {
   width: 275px;
-  height: 400px;
+  height: 450px;
   position: relative;
   margin: 10px;
 }
@@ -75,12 +91,45 @@ html {
   width: 100%;
 }
 .description {
+  margin-bottom: 15px;
   margin: 10px;
   position: absolute;
   bottom: 0;
-  height: 15%;
+  height: 10%;
   width: 100%;
-  font-size: small;
+  color: antiquewhite;
+  font-size: auto;
   overflow: hidden;
   font-family: "Marvel", sans-serif;
+  padding-bottom: 10px;
+}
+
+.learn_more {
+  background-color: white;
+  border: none;
+  border-radius: 25px 25px 25px 25px;
+  color: black;
+  padding: 15px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 10px;
+  margin-bottom: 5px;
+  cursor: pointer;
+  display: none;
+}
+
+.learn_more_clicked {
+  background-color: white;
+  border: none;
+  border-radius: 25px 25px 25px 25px;
+  color: black;
+  padding: 15px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 10px;
+  margin-bottom: 5px;
+  cursor: pointer;
+  display: none;
 }
