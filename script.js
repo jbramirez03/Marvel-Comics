@@ -12,6 +12,7 @@ var PUBLIC_KEY = "ab9297e9d4bda4ab94cb17eb9e3fe843";
 document.querySelector(".search_bar").addEventListener("keyup", function(event){
   if(event.key === "Enter") {
     getCharacterComic();
+    searchBtn.classList.add("search_btn_clicked");
     dom[0].setAttribute("class", "search_results");
   }
 })
