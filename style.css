@@ -11,6 +11,7 @@ html {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  background-color: black;
 }
 
 .html_clicked {
@@ -83,18 +84,21 @@ html {
   height: 450px;
   position: relative;
   margin: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .image_result {
   position: absolute;
-  top: 0;
-  height: 60%;
+  top: 0%;
+  height: 200px;
   width: 100%;
 }
 .description {
   margin-bottom: 15px;
   margin: 10px;
   position: absolute;
-  bottom: 0;
+  bottom: 20%;
   height: 10%;
   width: 100%;
   color: antiquewhite;
@@ -102,6 +106,14 @@ html {
   overflow: hidden;
   font-family: "Marvel", sans-serif;
   padding-bottom: 10px;
+}
+
+.learn {
+  top: 80%;
+  width: 100%;
+  position: relative;
+  align-items: center;
+  text-align: center;
 }
 
 .learn_more {
@@ -116,7 +128,7 @@ html {
   font-size: 10px;
   margin-bottom: 5px;
   cursor: pointer;
-  display: none;
+  /* display: none; */
 }
 
 .learn_more_clicked {
