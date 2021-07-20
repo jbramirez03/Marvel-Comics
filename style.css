@@ -4,7 +4,7 @@
   font-size: larger;
 }
 /* Background image */
-html {
+.html-class{
   background: url("https://www.gannett-cdn.com/presto/2021/01/07/USAT/0d87949b-7f95-4318-a7f7-72f2b6893d05-marvel-shows.png?crop=1593,896,x6,y0&width=1593&height=896&format=pjpg&auto=webp")
     no-repeat center center fixed;
   -webkit-background-size: cover;
@@ -131,5 +131,5 @@ html {
   font-size: 10px;
   margin-bottom: 5px;
   cursor: pointer;
-  display: none;
+  display: block;
 }

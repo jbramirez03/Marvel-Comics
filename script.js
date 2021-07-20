@@ -13,13 +13,21 @@ var PUBLIC_KEY = "ab9297e9d4bda4ab94cb17eb9e3fe843";
 document.querySelector(".search_bar").addEventListener("keyup", function(event){
   if(event.key === "Enter") {
     getCharacterComic();
+    dom[0].setAttribute("class", "search_results");
   }
 })
 // if (event.key == "Enter") 
 // to run the same function as below
-
+var dom = document.getElementsByTagName("html");
+var learnMoreButtons = document.querySelectorAll(".learn_more");
 searchBtn.addEventListener("click", function() {
   getCharacterComic();
+  searchBtn.classList.add("search_btn_clicked");
+  dom[0].setAttribute("class", "search_results");
+  // for (var i = 0; i < learnMoreButtons.length; i++) {
+  //   learnMoreButtons[i].classList.remove("learn_more");
+  //   learnMoreButtons[i].classList.add("learn_more_clicked");
+  // }
 });
 
 function getCharacterComic () {
