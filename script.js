@@ -18,6 +18,7 @@ document.querySelector(".search_bar").addEventListener("keyup", function(event){
     for (var i = 0; i < learnMoreBtns.length; i++) {
       learnMoreBtns[i].setAttribute("class","learn_more_clicked");
     }
+    learnMoreModal();
   }
 })
 var dom = document.getElementsByTagName("html");
@@ -29,7 +30,18 @@ searchBtn.addEventListener("click", function() {
   for (var i = 0; i < learnMoreBtns.length; i++) {
     learnMoreBtns[i].setAttribute("class","learn_more_clicked");
   }
+  learnMoreModal();
 });
+
+function learnMoreModal () {
+  for (var i = 0; i < learnMoreBtns.length; i++) {
+    learnMoreBtns[i].addEventListener("click", function(){
+      var modalHtml = document.querySelector("#modal");
+    modalHtml.classList.add("is-active");
+    })
+  }
+}
+
 
 function getCharacterComic () {
 
@@ -62,8 +74,6 @@ function getCharacterComic () {
 
           for(i = 0; i < resultBlocks.length; i++) {
 
-            
-
              var comicDescription = newdata.data.results[i].title;
             //  console.log(comicDescription);
             describedComic[i].textContent = comicDescription;
@@ -71,12 +81,7 @@ function getCharacterComic () {
             var imageUrl = newdata.data.results[i].thumbnail.path + ".jpg";
             thumbnails[i].setAttribute("src", imageUrl);
             
-            
-
           }
-
-
-
 
         })
     });
