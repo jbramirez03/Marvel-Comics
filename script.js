@@ -5,6 +5,7 @@ var characterInput = document.querySelector("#character-input");
 var searchBtn = document.querySelector(".search_btn");
 var thumbnails = document.querySelectorAll(".thumbnail");
 var describedComic = document.querySelectorAll(".description-text");
+var learnMoreBtns = document.querySelectorAll("#learn-btn");
 
 var PRIV_KEY = "b62c40680e3ea3090a2462bc3021628651c2d45f";
 var PUBLIC_KEY = "ab9297e9d4bda4ab94cb17eb9e3fe843";
@@ -14,6 +15,9 @@ document.querySelector(".search_bar").addEventListener("keyup", function(event){
     getCharacterComic();
     searchBtn.classList.add("search_btn_clicked");
     dom[0].setAttribute("class", "search_results");
+    for (var i = 0; i < learnMoreBtns.length; i++) {
+      learnMoreBtns[i].setAttribute("class","learn_more_clicked");
+    }
   }
 })
 var dom = document.getElementsByTagName("html");
@@ -22,10 +26,9 @@ searchBtn.addEventListener("click", function() {
   getCharacterComic();
   searchBtn.classList.add("search_btn_clicked");
   dom[0].setAttribute("class", "search_results");
-  // for (var i = 0; i < learnMoreButtons.length; i++) {
-  //   learnMoreButtons[i].classList.remove("learn_more");
-  //   learnMoreButtons[i].classList.add("learn_more_clicked");
-  // }
+  for (var i = 0; i < learnMoreBtns.length; i++) {
+    learnMoreBtns[i].setAttribute("class","learn_more_clicked");
+  }
 });
 
 function getCharacterComic () {
@@ -78,24 +81,3 @@ function getCharacterComic () {
         })
     });
 }
-// getMarvelResponse();
-
-
-// var token = "10159615260800891";
-// var charName = "Deadpool";
-// var heroUrl = "https://superheroapi.com/api/" + token + "/search/" + charName;
-
-
-// function newApi () {
-
-// fetch(heroUrl,{
-//   mode: "cors"
-// })
-// .then(function (response){
-//   return response.json();
-// })
-// .then(function(data){
-//   console.log(data);
-// })
-// }
-// newApi();
