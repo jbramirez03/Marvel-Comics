@@ -36,7 +36,7 @@ function getCharacterComic () {
   // the api deals a lot in ids rather than just the strings you want to use
   var characterName = characterChosen; // wolverine                                                                             
   var queryParams = `ts=${ts}&apikey=${PUBLIC_KEY}&hash=${hash}&name=${characterName}`;
-  var url = `http://gateway.marvel.com/v1/public/characters?${queryParams}`;
+  var url = `https://gateway.marvel.com/v1/public/characters?${queryParams}`;
   console.log(url);
   fetch(url)
     .then(function (response) {
@@ -47,7 +47,7 @@ function getCharacterComic () {
       var charactersId = data.data.results[0].id;
       // console.log(charactersId);
       var newParams = `ts=${ts}&apikey=${PUBLIC_KEY}&hash=${hash}&characters=${charactersId}`;
-      characterUrl = `http://gateway.marvel.com/v1/public/comics?${newParams}`;
+      characterUrl = `https://gateway.marvel.com/v1/public/comics?${newParams}`;
       fetch(characterUrl)
         .then(function (response) {
           return response.json();
