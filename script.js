@@ -9,17 +9,14 @@ var describedComic = document.querySelectorAll(".description-text");
 var PRIV_KEY = "b62c40680e3ea3090a2462bc3021628651c2d45f";
 var PUBLIC_KEY = "ab9297e9d4bda4ab94cb17eb9e3fe843";
 
-// need to add function to run when "enter" is pushed 
 document.querySelector(".search_bar").addEventListener("keyup", function(event){
   if(event.key === "Enter") {
     getCharacterComic();
     dom[0].setAttribute("class", "search_results");
   }
 })
-// if (event.key == "Enter") 
-// to run the same function as below
 var dom = document.getElementsByTagName("html");
-var learnMoreButtons = document.querySelectorAll(".learn_more");
+// var learnMoreButtons = document.querySelectorAll(".learn_more");
 searchBtn.addEventListener("click", function() {
   getCharacterComic();
   searchBtn.classList.add("search_btn_clicked");
@@ -39,7 +36,7 @@ function getCharacterComic () {
   // the api deals a lot in ids rather than just the strings you want to use
   var characterName = characterChosen; // wolverine                                                                             
   var queryParams = `ts=${ts}&apikey=${PUBLIC_KEY}&hash=${hash}&name=${characterName}`;
-  var url = `http://gateway.marvel.com/v1/public/characters?${queryParams}`;
+  var url = `https://gateway.marvel.com/v1/public/characters?${queryParams}`;
   console.log(url);
   fetch(url)
     .then(function (response) {
@@ -50,7 +47,7 @@ function getCharacterComic () {
       var charactersId = data.data.results[0].id;
       // console.log(charactersId);
       var newParams = `ts=${ts}&apikey=${PUBLIC_KEY}&hash=${hash}&characters=${charactersId}`;
-      characterUrl = `http://gateway.marvel.com/v1/public/comics?${newParams}`;
+      characterUrl = `https://gateway.marvel.com/v1/public/comics?${newParams}`;
       fetch(characterUrl)
         .then(function (response) {
           return response.json();
@@ -83,4 +80,21 @@ function getCharacterComic () {
 // getMarvelResponse();
 
 
+// var token = "10159615260800891";
+// var charName = "Deadpool";
+// var heroUrl = "https://superheroapi.com/api/" + token + "/search/" + charName;
 
+
+// function newApi () {
+
+// fetch(heroUrl,{
+//   mode: "cors"
+// })
+// .then(function (response){
+//   return response.json();
+// })
+// .then(function(data){
+//   console.log(data);
+// })
+// }
+// newApi();
