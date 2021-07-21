@@ -6,6 +6,8 @@ var searchBtn = document.querySelector(".search_btn");
 var thumbnails = document.querySelectorAll(".thumbnail");
 var describedComic = document.querySelectorAll(".description-text");
 var learnMoreBtns = document.querySelectorAll("#learn-btn");
+var closeModalBtn = document.querySelector("#close-btn");
+var comicDescribed = document.querySelector("#comic-description");
 
 var PRIV_KEY = "b62c40680e3ea3090a2462bc3021628651c2d45f";
 var PUBLIC_KEY = "ab9297e9d4bda4ab94cb17eb9e3fe843";
@@ -18,7 +20,7 @@ document.querySelector(".search_bar").addEventListener("keyup", function(event){
     for (var i = 0; i < learnMoreBtns.length; i++) {
       learnMoreBtns[i].setAttribute("class","learn_more_clicked");
     }
-    learnMoreModal();
+    
   }
 })
 var dom = document.getElementsByTagName("html");
@@ -30,18 +32,13 @@ searchBtn.addEventListener("click", function() {
   for (var i = 0; i < learnMoreBtns.length; i++) {
     learnMoreBtns[i].setAttribute("class","learn_more_clicked");
   }
-  learnMoreModal();
+  
 });
 
-function learnMoreModal () {
-  for (var i = 0; i < learnMoreBtns.length; i++) {
-    learnMoreBtns[i].addEventListener("click", function(){
-      var modalHtml = document.querySelector("#modal");
-    modalHtml.classList.add("is-active");
-    })
-  }
-}
-
+closeModalBtn.addEventListener("click", function (){
+  var modal = document.querySelector("#modal");
+  modal.classList.remove("is-active");
+});
 
 function getCharacterComic () {
 
@@ -71,18 +68,85 @@ function getCharacterComic () {
         .then (function (newdata) {
           console.log(newdata);
 
-
           for(i = 0; i < resultBlocks.length; i++) {
-
              var comicDescription = newdata.data.results[i].title;
             //  console.log(comicDescription);
             describedComic[i].textContent = comicDescription;
             describedComic[i].classList.add("has-text-centered");
             var imageUrl = newdata.data.results[i].thumbnail.path + ".jpg";
             thumbnails[i].setAttribute("src", imageUrl);
-            
           }
 
+            // for (var j = 0; j < learnMoreBtns.length; j++) {
+            //   learnMoreBtns[j].addEventListener("click", function(){
+            //     var modalHtml = document.querySelector("#modal");
+            //   modalHtml.classList.add("is-active");
+            //   var comicSummary = newdata.data.results[j].description;
+            //     console.log(comicSummary);
+            //   })
+            // }
+            
+            learnMoreBtns[0].addEventListener("click",function (){
+              var modalHtml = document.querySelector("#modal");
+              modalHtml.classList.add("is-active");
+              var comicSummary = newdata.data.results[0].description;
+              if (comicSummary === null){
+                comicDescribed.textContent = "No Comic Description Available";
+              } else {
+              comicDescribed.textContent = comicSummary;
+              }
+            });
+            learnMoreBtns[1].addEventListener("click",function (){
+              var modalHtml = document.querySelector("#modal");
+              modalHtml.classList.add("is-active");
+              var comicSummary = newdata.data.results[1].description;
+              if (comicSummary === null){
+                comicDescribed.textContent = "No Comic Description Available";
+              } else {
+              comicDescribed.textContent = comicSummary;
+              }
+            });
+            learnMoreBtns[2].addEventListener("click",function (){
+              var modalHtml = document.querySelector("#modal");
+              modalHtml.classList.add("is-active");
+              var comicSummary = newdata.data.results[2].description;
+              if (comicSummary === null){
+                comicDescribed.textContent = "No Comic Description Available";
+              } else {
+              comicDescribed.textContent = comicSummary;
+              }
+            });
+            learnMoreBtns[3].addEventListener("click",function (){
+              var modalHtml = document.querySelector("#modal");
+              modalHtml.classList.add("is-active");
+              var comicSummary = newdata.data.results[3].description;
+              if (comicSummary === null){
+                comicDescribed.textContent = "No Comic Description Available";
+              } else {
+              comicDescribed.textContent = comicSummary;
+              }
+            });
+            learnMoreBtns[4].addEventListener("click",function (){
+              var modalHtml = document.querySelector("#modal");
+              modalHtml.classList.add("is-active");
+              var comicSummary = newdata.data.results[4].description;
+              if (comicSummary === null){
+                comicDescribed.textContent = "No Comic Description Available";
+              } else {
+              comicDescribed.textContent = comicSummary;
+              }
+            });
+            learnMoreBtns[5].addEventListener("click",function (){
+              var modalHtml = document.querySelector("#modal");
+              modalHtml.classList.add("is-active");
+              var comicSummary = newdata.data.results[5].description;
+              if (comicSummary === null){
+                comicDescribed.textContent = "No Comic Description Available";
+              } else {
+              comicDescribed.textContent = comicSummary;
+              }
+            });
+          
         })
     });
 }
