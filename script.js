@@ -83,13 +83,22 @@ function getCharacterComic () {
                 var modalHtml = document.querySelector("#modal");
               modalHtml.classList.add("is-active");
               var comicSummary = newdata.data.results[j].description;
-                var creator = newdata.data.results[j].creators.items[0].name;
-                if (comicSummary === null) {
+              var available = newdata.data.results[j].creators.available;
+                // var creator = newdata.data.results[j].creators.items[0].name;
+                if (comicSummary === null && available === 0) {
                   comicDescribed.textContent = "No Comic description Available";
+                  comicCreator.textContent = "No Creators Listed";
+                } else if (available === 0){
+                  comicDescribed.textContent = comicSummary;
+                  comicCreator.textContent = "No Creators Listed";
+                } else if (comicSummary === null) {
+                  var creator = newdata.data.results[j].creators.items[0].name;
+                  comicDescribed.textContent = "No Comic Description Available";
                   comicCreator.textContent = creator;
                 } else {
-                  comicDescribed.textContent = comicSummary;
+                  var creator = newdata.data.results[j].creators.items[0].name;
                   comicCreator.textContent = creator;
+                  comicDescribed.textContent = comicSummary;
                 }
 
               })
