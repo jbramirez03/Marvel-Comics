@@ -8,6 +8,7 @@ var describedComic = document.querySelectorAll(".description-text");
 var learnMoreBtns = document.querySelectorAll("#learn-btn");
 var closeModalBtn = document.querySelector("#close-btn");
 var comicDescribed = document.querySelector("#comic-description");
+var comicCreator = document.querySelector(".comic-creator");
 
 var PRIV_KEY = "b62c40680e3ea3090a2462bc3021628651c2d45f";
 var PUBLIC_KEY = "ab9297e9d4bda4ab94cb17eb9e3fe843";
@@ -90,60 +91,78 @@ function getCharacterComic () {
               var modalHtml = document.querySelector("#modal");
               modalHtml.classList.add("is-active");
               var comicSummary = newdata.data.results[0].description;
+              var creator = newdata.data.results[0].creators.items[0].name;
               if (comicSummary === null){
                 comicDescribed.textContent = "No Comic Description Available";
+                comicCreator.textContent = creator;
               } else {
               comicDescribed.textContent = comicSummary;
+              comicCreator.textContent = creator;
               }
             });
             learnMoreBtns[1].addEventListener("click",function (){
               var modalHtml = document.querySelector("#modal");
               modalHtml.classList.add("is-active");
               var comicSummary = newdata.data.results[1].description;
+              var creator = newdata.data.results[1].creators.items[0].name;
               if (comicSummary === null){
                 comicDescribed.textContent = "No Comic Description Available";
+                comicCreator.textContent = creator;
               } else {
               comicDescribed.textContent = comicSummary;
+              comicCreator.textContent = creator;
               }
             });
             learnMoreBtns[2].addEventListener("click",function (){
               var modalHtml = document.querySelector("#modal");
               modalHtml.classList.add("is-active");
               var comicSummary = newdata.data.results[2].description;
+              var creator = newdata.data.results[2].creators.items[0].name;
               if (comicSummary === null){
                 comicDescribed.textContent = "No Comic Description Available";
+                comicCreator.textContent = creator;
               } else {
               comicDescribed.textContent = comicSummary;
+              comicCreator.textContent = creator;
               }
             });
             learnMoreBtns[3].addEventListener("click",function (){
               var modalHtml = document.querySelector("#modal");
               modalHtml.classList.add("is-active");
               var comicSummary = newdata.data.results[3].description;
+              var creator = newdata.data.results[3].creators.items[0].name;
               if (comicSummary === null){
                 comicDescribed.textContent = "No Comic Description Available";
+                comicCreator.textContent = creator;
               } else {
               comicDescribed.textContent = comicSummary;
+              comicCreator.textContent = creator;
               }
             });
             learnMoreBtns[4].addEventListener("click",function (){
               var modalHtml = document.querySelector("#modal");
               modalHtml.classList.add("is-active");
               var comicSummary = newdata.data.results[4].description;
+              var creator = newdata.data.results[4].creators.items[0].name;
               if (comicSummary === null){
                 comicDescribed.textContent = "No Comic Description Available";
+                comicCreator.textContent = creator;
               } else {
               comicDescribed.textContent = comicSummary;
+              comicCreator.textContent = creator;
               }
             });
             learnMoreBtns[5].addEventListener("click",function (){
               var modalHtml = document.querySelector("#modal");
               modalHtml.classList.add("is-active");
               var comicSummary = newdata.data.results[5].description;
+              var creator = newdata.data.results[5].creators.items[0].name;
               if (comicSummary === null){
                 comicDescribed.textContent = "No Comic Description Available";
+                comicCreator.textContent = creator;
               } else {
               comicDescribed.textContent = comicSummary;
+              comicCreator.textContent = creator;
               }
             });
           
