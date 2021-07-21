@@ -10,6 +10,7 @@ var closeModalBtn = document.querySelector("#close-btn");
 var comicDescribed = document.querySelector("#comic-description");
 var comicCreator = document.querySelector(".comic-creator");
 var comicCreators = document.querySelector(".comic-creators");
+var goBackBtn = document.querySelector("go-back-button");
 
 var PRIV_KEY = "b62c40680e3ea3090a2462bc3021628651c2d45f";
 var PUBLIC_KEY = "ab9297e9d4bda4ab94cb17eb9e3fe843";
@@ -86,6 +87,7 @@ function getCharacterComic() {
               var comicSummary = newdata.data.results[j].description;
               var available = newdata.data.results[j].creators.available;
               comicCreators.innerHTML = '';
+
               if (comicSummary === null && available === 0) {
                 comicDescribed.textContent = "No Comic description Available";
                 comicCreator.textContent = "No Creators Listed";
@@ -98,6 +100,30 @@ function getCharacterComic() {
                   var createdEL = document.createElement("p");
                   createdEL.textContent = creator[k].name;
                   comicCreators.append(createdEL);
+
+                if (comicSummary === null && available === 0) {
+                  comicDescribed.textContent = "No Comic description Available";
+                  comicCreators.textContent = "No Creators Listed";
+                } else if (available === 0){
+                  comicDescribed.textContent = comicSummary;
+                  comicCreators.textContent = "No Creators Listed";
+                } else if (comicSummary === null) {
+                  var creator = newdata.data.results[j].creators.items;
+                  for (let k = 0; k < creator.length; k++){
+                    var createdEL = document.createElement("p");
+                    createdEL.textContent = creator[k].name;
+                    comicCreators.append(createdEL);
+                  }
+                  comicDescribed.textContent = "No Comic Description Available";
+                } else {
+                  var creator = newdata.data.results[j].creators.items;
+                  for (let k = 0; k < creator.length; k++){
+                    var createdEL = document.createElement("p");
+                    createdEL.textContent = creator[k].name;
+                    comicCreators.append(createdEL);
+                  }
+                  comicDescribed.textContent = comicSummary;
+
                 }
                 comicDescribed.textContent = "No Comic Description Available";
               } else {
