@@ -4,7 +4,7 @@
   font-size: larger;
 }
 /* Background image */
-.html-class{
+.html-class {
   background: url("https://www.gannett-cdn.com/presto/2021/01/07/USAT/0d87949b-7f95-4318-a7f7-72f2b6893d05-marvel-shows.png?crop=1593,896,x6,y0&width=1593&height=896&format=pjpg&auto=webp")
     no-repeat center center fixed;
   -webkit-background-size: cover;
@@ -75,43 +75,34 @@
 
 .search_results_container {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
 }
 
 .results {
   width: 275px;
-  height: 450px;
-  position: relative;
+  height: 575px;
   margin: 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 .image_result {
-  position: absolute;
   top: 0%;
-  height: 200px;
+  height: 330px;
   width: 100%;
 }
 .description {
-  margin-bottom: 15px;
-  margin: 10px;
-  position: absolute;
-  bottom: 20%;
-  height: 10%;
+  height: 20%;
   width: 100%;
   color: antiquewhite;
   font-size: auto;
   overflow: hidden;
   font-family: "Marvel", sans-serif;
-  padding-bottom: 10px;
 }
 
 .learn {
-  top: 80%;
   width: 100%;
-  position: relative;
   align-items: center;
   text-align: center;
 }
