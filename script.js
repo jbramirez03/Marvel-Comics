@@ -16,37 +16,35 @@ var nextBtn = document.querySelector(".show-more-button");
 var PRIV_KEY = "b62c40680e3ea3090a2462bc3021628651c2d45f";
 var PUBLIC_KEY = "ab9297e9d4bda4ab94cb17eb9e3fe843";
 
-document.querySelector(".search_bar").addEventListener("keyup", function (event) {
-  if (event.key === "Enter") {
+document.querySelector(".search_bar").addEventListener("keyup", function(event){
+  if(event.key === "Enter") {
     getCharacterComic();
     searchBtn.classList.add("search_btn_clicked");
     dom[0].setAttribute("class", "search_results");
-    goBackBtn.setAttribute("class", "show_previous");
-    nextBtn.setAttribute("class", "show_next");
     for (var i = 0; i < learnMoreBtns.length; i++) {
-      learnMoreBtns[i].setAttribute("class", "learn_more_clicked");
+      learnMoreBtns[i].setAttribute("class","learn_more_clicked");
     }
-
+    
   }
 })
 var dom = document.getElementsByTagName("html");
 // var learnMoreButtons = document.querySelectorAll(".learn_more");
-searchBtn.addEventListener("click", function () {
+searchBtn.addEventListener("click", function() {
   getCharacterComic();
   searchBtn.classList.add("search_btn_clicked");
   dom[0].setAttribute("class", "search_results");
   for (var i = 0; i < learnMoreBtns.length; i++) {
-    learnMoreBtns[i].setAttribute("class", "learn_more_clicked");
+    learnMoreBtns[i].setAttribute("class","learn_more_clicked");
   }
-
+  
 });
 
-closeModalBtn.addEventListener("click", function () {
+closeModalBtn.addEventListener("click", function (){
   var modal = document.querySelector("#modal");
   modal.classList.remove("is-active");
 });
 
-function getCharacterComic() {
+function getCharacterComic () {
 
   // you need a new ts every request                                                                                    
   var ts = new Date().getTime();
@@ -71,11 +69,11 @@ function getCharacterComic() {
         .then(function (response) {
           return response.json();
         })
-        .then(function (newdata) {
+        .then (function (newdata) {
           console.log(newdata);
 
-          for (var i = 0; i < resultBlocks.length; i++) {
-            var comicDescription = newdata.data.results[i].title;
+          for(var i = 0; i < resultBlocks.length; i++) {
+             var comicDescription = newdata.data.results[i].title;
             //  console.log(comicDescription);
             describedComic[i].textContent = comicDescription;
             describedComic[i].classList.add("has-text-centered");
@@ -83,27 +81,13 @@ function getCharacterComic() {
             thumbnails[i].setAttribute("src", imageUrl);
           }
 
-          for (let j = 0; j < learnMoreBtns.length; j++) {
-            learnMoreBtns[j].addEventListener("click", function () {
-              var modalHtml = document.querySelector("#modal");
+            for (let j = 0; j < learnMoreBtns.length; j++) {
+              learnMoreBtns[j].addEventListener("click", function(){
+                var modalHtml = document.querySelector("#modal");
               modalHtml.classList.add("is-active");
               var comicSummary = newdata.data.results[j].description;
               var available = newdata.data.results[j].creators.available;
               comicCreators.innerHTML = '';
-
-              if (comicSummary === null && available === 0) {
-                comicDescribed.textContent = "No Comic description Available";
-                comicCreator.textContent = "No Creators Listed";
-              } else if (available === 0) {
-                comicDescribed.textContent = comicSummary;
-                comicCreator.textContent = "No Creators Listed";
-              } else if (comicSummary === null) {
-                var creator = newdata.data.results[j].creators.items;
-                for (let k = 0; k < creator.length; k++) {
-                  var createdEL = document.createElement("p");
-                  createdEL.textContent = creator[k].name;
-                  comicCreators.append(createdEL);
-
                 if (comicSummary === null && available === 0) {
                   comicDescribed.textContent = "No Comic description Available";
                   comicCreators.textContent = "No Creators Listed";
@@ -126,37 +110,10 @@ function getCharacterComic() {
                     comicCreators.append(createdEL);
                   }
                   comicDescribed.textContent = comicSummary;
-
                 }
-                comicDescribed.textContent = "No Comic Description Available";
-              } else {
-                var creator = newdata.data.results[j].creators.items;
-                for (let k = 0; k < creator.length; k++) {
-                  var createdEL = document.createElement("p");
-                  createdEL.textContent = creator[k].name;
-                  comicCreators.append(createdEL);
-                }
-                comicDescribed.textContent = comicSummary;
-              }
 
-            })
-          }
+              })
+            }
         })
     });
 }
-
-function getMarvelQuotes() {
-  quotesUrl = 'https://superhero-quotes.herokuapp.com/';
-  fetch(quotesUrl)
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (data) {
-
-      console.log(data);
-
-    })
-
-}
-
-getMarvelQuotes();
