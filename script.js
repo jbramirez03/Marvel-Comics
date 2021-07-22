@@ -10,8 +10,8 @@ var closeModalBtn = document.querySelector("#close-btn");
 var comicDescribed = document.querySelector("#comic-description");
 var comicCreator = document.querySelector(".comic-creator");
 var comicCreators = document.querySelector(".comic-creators");
-var goBackBtn = document.querySelector("go-back-button");
-var nextBtn = document.querySelector(".show-more-button");
+var goBackBtn = document.querySelector("#go-back");
+var nextBtn = document.querySelector("#go-next");
 
 var PRIV_KEY = "b62c40680e3ea3090a2462bc3021628651c2d45f";
 var PUBLIC_KEY = "ab9297e9d4bda4ab94cb17eb9e3fe843";
@@ -20,6 +20,8 @@ document.querySelector(".search_bar").addEventListener("keyup", function(event){
   if(event.key === "Enter") {
     getCharacterComic();
     searchBtn.classList.add("search_btn_clicked");
+    goBackBtn.setAttribute("class", "show_previous");
+    nextBtn.setAttribute("class", "show_next");
     dom[0].setAttribute("class", "search_results");
     for (var i = 0; i < learnMoreBtns.length; i++) {
       learnMoreBtns[i].setAttribute("class","learn_more_clicked");
@@ -32,6 +34,8 @@ var dom = document.getElementsByTagName("html");
 searchBtn.addEventListener("click", function() {
   getCharacterComic();
   searchBtn.classList.add("search_btn_clicked");
+  goBackBtn.setAttribute("class", "show_previous");
+    nextBtn.setAttribute("class", "show_next");
   dom[0].setAttribute("class", "search_results");
   for (var i = 0; i < learnMoreBtns.length; i++) {
     learnMoreBtns[i].setAttribute("class","learn_more_clicked");
