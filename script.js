@@ -88,42 +88,20 @@ function getCharacterComic() {
               var available = newdata.data.results[j].creators.available;
               comicCreators.innerHTML = '';
 
+
+
               if (comicSummary === null && available === 0) {
                 comicDescribed.textContent = "No Comic description Available";
-                comicCreator.textContent = "No Creators Listed";
+                comicCreators.textContent = "No Creators Listed";
               } else if (available === 0) {
                 comicDescribed.textContent = comicSummary;
-                comicCreator.textContent = "No Creators Listed";
+                comicCreators.textContent = "No Creators Listed";
               } else if (comicSummary === null) {
                 var creator = newdata.data.results[j].creators.items;
                 for (let k = 0; k < creator.length; k++) {
                   var createdEL = document.createElement("p");
                   createdEL.textContent = creator[k].name;
                   comicCreators.append(createdEL);
-
-                if (comicSummary === null && available === 0) {
-                  comicDescribed.textContent = "No Comic description Available";
-                  comicCreators.textContent = "No Creators Listed";
-                } else if (available === 0){
-                  comicDescribed.textContent = comicSummary;
-                  comicCreators.textContent = "No Creators Listed";
-                } else if (comicSummary === null) {
-                  var creator = newdata.data.results[j].creators.items;
-                  for (let k = 0; k < creator.length; k++){
-                    var createdEL = document.createElement("p");
-                    createdEL.textContent = creator[k].name;
-                    comicCreators.append(createdEL);
-                  }
-                  comicDescribed.textContent = "No Comic Description Available";
-                } else {
-                  var creator = newdata.data.results[j].creators.items;
-                  for (let k = 0; k < creator.length; k++){
-                    var createdEL = document.createElement("p");
-                    createdEL.textContent = creator[k].name;
-                    comicCreators.append(createdEL);
-                  }
-                  comicDescribed.textContent = comicSummary;
-
                 }
                 comicDescribed.textContent = "No Comic Description Available";
               } else {
