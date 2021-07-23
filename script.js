@@ -41,9 +41,11 @@ searchBtn.addEventListener("click", function() {
   
 });
 
-nextBtn.addEventListener("click", function (){
-  goBackBtn.setAttribute("class", "show_previous");
-});
+function nextAndPrev () {
+  nextBtn.addEventListener("click", function (){
+    goBackBtn.setAttribute("class", "show_previous");
+  });
+}
 
 closeModalBtn.addEventListener("click", function (){
   var modal = document.querySelector("#modal");
@@ -77,8 +79,8 @@ function getCharacterComic () {
         })
         .then (function (newdata) {
           console.log(newdata);
-
-          for(var i = 0; i < resultBlocks.length; i++) {
+          var i = 0;
+          for(i; i < resultBlocks.length; i++) {
              var comicDescription = newdata.data.results[i].title;
             //  console.log(comicDescription);
             describedComic[i].textContent = comicDescription;
@@ -86,7 +88,6 @@ function getCharacterComic () {
             var imageUrl = newdata.data.results[i].thumbnail.path + ".jpg";
             thumbnails[i].setAttribute("src", imageUrl);
           }
-
             for (let j = 0; j < learnMoreBtns.length; j++) {
               learnMoreBtns[j].addEventListener("click", function(){
                 var modalHtml = document.querySelector("#modal");
@@ -120,7 +121,27 @@ function getCharacterComic () {
                 
 
               })
+          }
+            var k = 6;
+            nextBtn.addEventListener("click", function (){
+              goBackBtn.setAttribute("class", "show_previous");
+              if(k < 17){
+              for (var a = 0; a < resultBlocks.length; a++){
+                var comicDescribed = newdata.data.results[a+k].title;
+                describedComic[a].textContent = comicDescribed;
+                describedComic[a].classList.add("has-text-centered");
+                var imageUrl = newdata.data.results[a+k].thumbnail.path + ".jpg";
+                thumbnails[a].setAttribute("src", imageUrl);
+
+                
+              }
+              
+              k+=6;
+            } else {
+              return;
             }
+            });
+
         })
     });
 }
