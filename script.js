@@ -33,7 +33,7 @@ searchBar.addEventListener("keyup", function(event){
     for (var i = 0; i < learnMoreBtns.length; i++) {
       learnMoreBtns[i].setAttribute("class","show_previous");
     }
-    
+    characterInput.value = "";
   }
 });
 
@@ -45,7 +45,7 @@ searchBtn.addEventListener("click", function() {
   for (var i = 0; i < learnMoreBtns.length; i++) {
     learnMoreBtns[i].setAttribute("class","show_previous");
   }
-  
+  characterInput.value = "";
 });
 
 
