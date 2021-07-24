@@ -20,7 +20,7 @@ var searchBar = document.querySelector(".search_bar");
 var heroDisplayed = document.querySelector("#page-title");
 var viewCounter = document.querySelector("#counter");
 
-
+// keys to access api
 var PRIV_KEY = "b62c40680e3ea3090a2462bc3021628651c2d45f";
 var PUBLIC_KEY = "ab9297e9d4bda4ab94cb17eb9e3fe843";
 
@@ -264,16 +264,17 @@ function getCharacterComic (heroInput) {
            });
 
         })
+        // saves searched hero name in local storage
         setItems();
     });
 }
 
-
+  // hero name from last searched is saved in local storage
   function setItems (){
     localStorage.setItem("Hero",  heroDisplayed.textContent);
   }
   
-  
+  // function to run a new comic search with the last saved search hero name being the value used for the new search
   function showLastSearched (){
     var heroName = localStorage.getItem("Hero");
 
