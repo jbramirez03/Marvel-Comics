@@ -12,6 +12,7 @@ var comicCreator = document.querySelector(".comic-creator");
 var comicCreators = document.querySelector(".comic-creators");
 var goBackBtn = document.querySelector("#go-back");
 var nextBtn = document.querySelector("#go-next");
+var moreBtn = document.querySelector("#go-more");
 
 var PRIV_KEY = "b62c40680e3ea3090a2462bc3021628651c2d45f";
 var PUBLIC_KEY = "ab9297e9d4bda4ab94cb17eb9e3fe843";
@@ -41,11 +42,7 @@ searchBtn.addEventListener("click", function() {
   
 });
 
-function nextAndPrev () {
-  nextBtn.addEventListener("click", function (){
-    goBackBtn.setAttribute("class", "show_previous");
-  });
-}
+
 
 closeModalBtn.addEventListener("click", function (){
   var modal = document.querySelector("#modal");
@@ -88,6 +85,8 @@ function getCharacterComic () {
             var imageUrl = newdata.data.results[i].thumbnail.path + ".jpg";
             thumbnails[i].setAttribute("src", imageUrl);
           }
+          
+            
             for (let j = 0; j < learnMoreBtns.length; j++) {
               learnMoreBtns[j].addEventListener("click", function(){
                 var modalHtml = document.querySelector("#modal");
@@ -122,25 +121,153 @@ function getCharacterComic () {
 
               })
           }
-            var k = 6;
-            nextBtn.addEventListener("click", function (){
-              goBackBtn.setAttribute("class", "show_previous");
-              if(k < 17){
-              for (var a = 0; a < resultBlocks.length; a++){
-                var comicDescribed = newdata.data.results[a+k].title;
-                describedComic[a].textContent = comicDescribed;
-                describedComic[a].classList.add("has-text-centered");
-                var imageUrl = newdata.data.results[a+k].thumbnail.path + ".jpg";
-                thumbnails[a].setAttribute("src", imageUrl);
 
-                
-              }
-              
-              k+=6;
-            } else {
-              return;
+          var resultIndex = 6;
+
+          nextBtn.addEventListener("click", function (){
+            goBackBtn.setAttribute("class", "show_previous");
+            nextBtn.setAttribute("class", "show-more-button");
+            moreBtn.setAttribute("class", "show_next");
+            for(var g = 0; g < resultBlocks.length; g++){
+              comicTitle = newdata.data.results[g+resultIndex].title;
+              describedComic[g].textContent = comicTitle;
+              var imageUrl = newdata.data.results[g+resultIndex].thumbnail.path + ".jpg";
+            thumbnails[g].setAttribute("src", imageUrl);
             }
-            });
+            for (let j = 0; j < learnMoreBtns.length; j++) {
+              learnMoreBtns[j].addEventListener("click", function(){
+                var modalHtml = document.querySelector("#modal");
+              modalHtml.classList.add("is-active");
+              var comicSummary = newdata.data.results[j+resultIndex].description;
+              var available = newdata.data.results[j+resultIndex].creators.available;
+              comicCreators.innerHTML = '';
+                if (comicSummary === null && available === 0) {
+                  comicDescribed.textContent = "No Comic description Available";
+                  comicCreators.textContent = "No Creators Listed";
+                } else if (available === 0){
+                  comicDescribed.textContent = comicSummary;
+                  comicCreators.textContent = "No Creators Listed";
+                } else if (comicSummary === null) {
+                  var creator = newdata.data.results[j+resultIndex].creators.items;
+                  for (let k = 0; k < creator.length; k++){
+                    var createdEL = document.createElement("p");
+                    createdEL.textContent = creator[k].name;
+                    comicCreators.append(createdEL);
+                  }
+                  comicDescribed.textContent = "No Comic Description Available";
+                } else {
+                  var creator = newdata.data.results[j+resultIndex].creators.items;
+                  for (let k = 0; k < creator.length; k++){
+                    var createdEL = document.createElement("p");
+                    createdEL.textContent = creator[k].name;
+                    comicCreators.append(createdEL);
+                  }
+                  comicDescribed.textContent = comicSummary;
+                }
+                
+
+              });
+          }
+          
+        
+        
+          });
+          
+          var moreIndex = 12;
+           moreBtn.addEventListener("click", function(){
+             moreBtn.setAttribute("class", "show-more-button");
+            for(var g = 0; g < resultBlocks.length; g++){
+              comicTitle = newdata.data.results[g+moreIndex].title;
+              describedComic[g].textContent = comicTitle;
+              var imageUrl = newdata.data.results[g+moreIndex].thumbnail.path + ".jpg";
+            thumbnails[g].setAttribute("src", imageUrl);
+            }
+            for (let j = 0; j < learnMoreBtns.length; j++) {
+              learnMoreBtns[j].addEventListener("click", function(){
+                var modalHtml = document.querySelector("#modal");
+              modalHtml.classList.add("is-active");
+              var comicSummary = newdata.data.results[j+moreIndex].description;
+              var available = newdata.data.results[j+moreIndex].creators.available;
+              comicCreators.innerHTML = '';
+                if (comicSummary === null && available === 0) {
+                  comicDescribed.textContent = "No Comic description Available";
+                  comicCreators.textContent = "No Creators Listed";
+                } else if (available === 0){
+                  comicDescribed.textContent = comicSummary;
+                  comicCreators.textContent = "No Creators Listed";
+                } else if (comicSummary === null) {
+                  var creator = newdata.data.results[j+moreIndex].creators.items;
+                  for (let k = 0; k < creator.length; k++){
+                    var createdEL = document.createElement("p");
+                    createdEL.textContent = creator[k].name;
+                    comicCreators.append(createdEL);
+                  }
+                  comicDescribed.textContent = "No Comic Description Available";
+                } else {
+                  var creator = newdata.data.results[j+moreIndex].creators.items;
+                  for (let k = 0; k < creator.length; k++){
+                    var createdEL = document.createElement("p");
+                    createdEL.textContent = creator[k].name;
+                    comicCreators.append(createdEL);
+                  }
+                  comicDescribed.textContent = comicSummary;
+                }
+                
+
+              });
+          }
+          
+           });
+
+           goBackBtn.addEventListener("click", function (){
+             goBackBtn.setAttribute("class", "go-back-button");
+             nextBtn.setAttribute("class", "show_next");
+             moreBtn.setAttribute("class", "show-more-button");
+            for(var i = 0; i < resultBlocks.length; i++) {
+              var comicDescription = newdata.data.results[i].title;
+             //  console.log(comicDescription);
+             describedComic[i].textContent = comicDescription;
+             describedComic[i].classList.add("has-text-centered");
+             var imageUrl = newdata.data.results[i].thumbnail.path + ".jpg";
+             thumbnails[i].setAttribute("src", imageUrl);
+           }
+           
+             
+             for (let j = 0; j < learnMoreBtns.length; j++) {
+               learnMoreBtns[j].addEventListener("click", function(){
+                 var modalHtml = document.querySelector("#modal");
+               modalHtml.classList.add("is-active");
+               var comicSummary = newdata.data.results[j].description;
+               var available = newdata.data.results[j].creators.available;
+               comicCreators.innerHTML = '';
+                 if (comicSummary === null && available === 0) {
+                   comicDescribed.textContent = "No Comic description Available";
+                   comicCreators.textContent = "No Creators Listed";
+                 } else if (available === 0){
+                   comicDescribed.textContent = comicSummary;
+                   comicCreators.textContent = "No Creators Listed";
+                 } else if (comicSummary === null) {
+                   var creator = newdata.data.results[j].creators.items;
+                   for (let k = 0; k < creator.length; k++){
+                     var createdEL = document.createElement("p");
+                     createdEL.textContent = creator[k].name;
+                     comicCreators.append(createdEL);
+                   }
+                   comicDescribed.textContent = "No Comic Description Available";
+                 } else {
+                   var creator = newdata.data.results[j].creators.items;
+                   for (let k = 0; k < creator.length; k++){
+                     var createdEL = document.createElement("p");
+                     createdEL.textContent = creator[k].name;
+                     comicCreators.append(createdEL);
+                   }
+                   comicDescribed.textContent = comicSummary;
+                 }
+                 
+ 
+               })
+           }
+           });
 
         })
     });
