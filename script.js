@@ -256,12 +256,15 @@ function getCharacterComic () {
                var available = newdata.data.results[j].creators.available;
                comicCreators.innerHTML = '';
                  if (comicSummary === null && available === 0) {
+                  modalFooter.textContent = newdata.data.results[j].title;
                    comicDescribed.textContent = "No Comic description Available";
                    comicCreators.textContent = "No Creators Listed";
                  } else if (available === 0){
+                  modalFooter.textContent = newdata.data.results[j].title;
                    comicDescribed.textContent = comicSummary;
                    comicCreators.textContent = "No Creators Listed";
                  } else if (comicSummary === null) {
+                  modalFooter.textContent = newdata.data.results[j].title;
                    var creator = newdata.data.results[j].creators.items;
                    for (let k = 0; k < creator.length; k++){
                      var createdEL = document.createElement("p");
@@ -270,6 +273,7 @@ function getCharacterComic () {
                    }
                    comicDescribed.textContent = "No Comic Description Available";
                  } else {
+                  modalFooter.textContent = newdata.data.results[j].title;
                    var creator = newdata.data.results[j].creators.items;
                    for (let k = 0; k < creator.length; k++){
                      var createdEL = document.createElement("p");
