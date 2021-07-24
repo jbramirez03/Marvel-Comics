@@ -24,6 +24,7 @@ document.querySelector(".search_bar").addEventListener("keyup", function(event){
     searchBtn.classList.add("search_btn_clicked");
     nextBtn.setAttribute("class", "show_next");
     moreBtn.setAttribute("class", "show-more-button");
+    goBackBtn.setAttribute("class", "go-back-button");
     dom[0].setAttribute("class", "search_results");
     for (var i = 0; i < learnMoreBtns.length; i++) {
       learnMoreBtns[i].setAttribute("class","learn_more_clicked");
@@ -38,6 +39,7 @@ searchBtn.addEventListener("click", function() {
   searchBtn.classList.add("search_btn_clicked");
     nextBtn.setAttribute("class", "show_next");
     moreBtn.setAttribute("class", "show-more-button");
+    goBackBtn.setAttribute("class", "go-back-button");
   dom[0].setAttribute("class", "search_results");
   for (var i = 0; i < learnMoreBtns.length; i++) {
     learnMoreBtns[i].setAttribute("class","learn_more_clicked");
