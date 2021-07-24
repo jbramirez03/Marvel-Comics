@@ -1,3 +1,4 @@
+// Defined variables used
 var resultBlocks = document.querySelectorAll(".results");
 var resultsDescription = document.querySelectorAll(".description");
 var imageBlocks = document.querySelectorAll(".image_result");
@@ -15,12 +16,15 @@ var nextBtn = document.querySelector("#go-next");
 var moreBtn = document.querySelector("#go-more");
 var modalFooter = document.querySelector("#footer-modal");
 var dom = document.getElementsByTagName("html");
+var searchBar = document.querySelector(".search_bar");
+var heroDisplayed = document.querySelector("#page-title");
 
 
 var PRIV_KEY = "b62c40680e3ea3090a2462bc3021628651c2d45f";
 var PUBLIC_KEY = "ab9297e9d4bda4ab94cb17eb9e3fe843";
 
-document.querySelector(".search_bar").addEventListener("keyup", function(event){
+// finds first 6 comics when enter button is clicked
+searchBar.addEventListener("keyup", function(event){
   if(event.key === "Enter") {
     getCharacterComic();
     searchBtn.classList.add("search_btn_clicked");
@@ -32,6 +36,7 @@ document.querySelector(".search_bar").addEventListener("keyup", function(event){
   }
 })
 
+// finds first 6 comics when search bar button is pressed
 searchBtn.addEventListener("click", function() {
   getCharacterComic();
   searchBtn.classList.add("search_btn_clicked");
@@ -43,13 +48,14 @@ searchBtn.addEventListener("click", function() {
 });
 
 
-
+// when the modal close button is pressed the modal is closed
 closeModalBtn.addEventListener("click", function (){
   var modal = document.querySelector("#modal");
   modal.classList.remove("is-active");
 });
 
-function nextSix (url){
+// displays first 6 comics and each learn more button has content for each comic
+function firstSix (url){
 
   searchBtn.classList.add("search_btn_clicked");
     nextBtn.setAttribute("class", "show_next");
@@ -104,6 +110,7 @@ function nextSix (url){
 
 }
 
+// displays next 6 comics with learn more button content updated
 function moreComics (url, Index) {
   
             goBackBtn.setAttribute("class", "show_previous");
@@ -156,6 +163,7 @@ function moreComics (url, Index) {
           
 }
 
+// last six comics are displayed and learn more buttons content is updated
   function lastSix(url,Index){
     
     moreBtn.setAttribute("class", "show-more-button");
@@ -206,6 +214,7 @@ function moreComics (url, Index) {
           
   }
 
+  // function that makes api call and implements api key and hash
 function getCharacterComic () {
 
   // you need a new ts every request                                                                                    
@@ -224,7 +233,8 @@ function getCharacterComic () {
     .then(function (data) {
       console.log(data);
       var charactersId = data.data.results[0].id;
-      // console.log(charactersId);
+      heroDisplayed.textContent = data.data.results[0].name;
+      heroDisplayed.style.color = "white";
       var newParams = `ts=${ts}&apikey=${PUBLIC_KEY}&hash=${hash}&characters=${charactersId}`;
       characterUrl = `https://gateway.marvel.com/v1/public/comics?${newParams}`;
       fetch(characterUrl)
@@ -233,28 +243,23 @@ function getCharacterComic () {
         })
         .then (function (newdata) {
           console.log(newdata);
-          var i = 0;
-          for(i; i < resultBlocks.length; i++) {
-             var comicDescription = newdata.data.results[i].title;
-            //  console.log(comicDescription);
-            describedComic[i].textContent = comicDescription;
-            describedComic[i].classList.add("has-text-centered");
-            var imageUrl = newdata.data.results[i].thumbnail.path + ".jpg";
-            thumbnails[i].setAttribute("src", imageUrl);
-          }
         
-          nextSix(newdata);
+          // when the api function is ran the first 6 comics are displayed by default
+          firstSix(newdata);
 
+          // when show more button is clicked next 6 comics display
           nextBtn.addEventListener("click", function (){
           moreComics(newdata,6);
           });
           
+          // when more button is clicked last 6 comics are displayed
            moreBtn.addEventListener("click", function(){
           lastSix(newdata,12);
            });
 
+          //  when go back button is pressed first 6 comics are displayed
            goBackBtn.addEventListener("click", function (){
-          nextSix(newdata);
+          firstSix(newdata);
            });
 
         })
