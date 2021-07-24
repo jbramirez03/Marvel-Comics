@@ -31,7 +31,7 @@ searchBar.addEventListener("keyup", function(event){
     searchBtn.classList.add("search_btn_clicked");
     dom[0].setAttribute("class", "search_results");
     for (var i = 0; i < learnMoreBtns.length; i++) {
-      learnMoreBtns[i].setAttribute("class","learn_more_clicked");
+      learnMoreBtns[i].setAttribute("class","show_previous");
     }
     
   }
@@ -43,7 +43,7 @@ searchBtn.addEventListener("click", function() {
   searchBtn.classList.add("search_btn_clicked");
   dom[0].setAttribute("class", "search_results");
   for (var i = 0; i < learnMoreBtns.length; i++) {
-    learnMoreBtns[i].setAttribute("class","learn_more_clicked");
+    learnMoreBtns[i].setAttribute("class","show_previous");
   }
   
 });
@@ -277,14 +277,15 @@ function getCharacterComic (heroInput) {
   function showLastSearched (){
     var heroName = localStorage.getItem("Hero");
 
-    if(heroName === "Welcome"){
+    if(heroName === null){
       return;
     } else {
 
     getCharacterComic(heroName);
     dom[0].setAttribute("class", "search_results");
+    searchBtn.classList.add("search_btn_clicked");
     for (var i = 0; i < learnMoreBtns.length; i++) {
-      learnMoreBtns[i].setAttribute("class","learn_more_clicked");
+      learnMoreBtns[i].setAttribute("class","show_previous");
     }
   }
   }
