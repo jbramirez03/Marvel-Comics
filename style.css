@@ -6,20 +6,7 @@
   font-size: larger;
   margin-right: 50px;
 }
-.quotes {
-  align-items: flex-end;
-  margin-left: 200px;
-  font-size: medium;
-  font-weight: 500;
-  width: 75%;
-  text-align: center;
-  padding-top: 20px;
-  color: #070707;
-}
 
-/* .has-text-centered {
-  display: flex;
-} */
 /* Background image */
 .html-class {
   background: url("https://www.gannett-cdn.com/presto/2021/01/07/USAT/0d87949b-7f95-4318-a7f7-72f2b6893d05-marvel-shows.png?crop=1593,896,x6,y0&width=1593&height=896&format=pjpg&auto=webp")
@@ -31,6 +18,7 @@
   background-color: black;
 }
 
+/* Page when character is searched */
 .html_clicked {
   background-color: black;
 }
@@ -183,6 +171,7 @@
   cursor: pointer;
 }
 
+/* Header Buttons when character is searched */
 .go-back-button {
   display: none;
 }
@@ -194,3 +183,15 @@
 .description-text {
   text-align: center;
 }
+
+/* Made for future addition.  Can add random Marvel Quotes on load */
+/* .quotes {
+  align-items: flex-end;
+  margin-left: 200px;
+  font-size: medium;
+  font-weight: 500;
+  width: 75%;
+  text-align: center;
+  padding-top: 20px;
+  color: #070707;
+} */
